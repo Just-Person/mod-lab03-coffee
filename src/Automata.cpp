@@ -73,10 +73,7 @@ void Automata::etMenu(std::string pathmenu, std::string pathprices)
 		{
 			bufferstring = "";
 			std::getline(fin, bufferstring);
-			if (!(bufferstring._Equal("") || bufferstring._Equal("\n")))
-			{
-				this->menu[this->menu.size()] = bufferstring;
-			}
+			this->menu[this->menu.size()] = bufferstring;
 		}
 	}
 	fin.close();
@@ -92,10 +89,7 @@ void Automata::etMenu(std::string pathmenu, std::string pathprices)
 		{
 			bufferstring = "";
 			std::getline(fin, bufferstring);
-			if (!(bufferstring._Equal("") || bufferstring._Equal("\n")))
-			{
-				this->prices[this->prices.size()] = std::stoi(bufferstring);
-			}
+			this->prices[this->prices.size()] = std::stoi(bufferstring);
 		}
 	}
 	if (this->prices.size() < this->menu.size())
