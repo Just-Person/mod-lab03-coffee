@@ -52,11 +52,8 @@ this->prices.clear();
 if (!fin.is_open()) {
 std::cout << "Ошибка открытия файла\n";
 } else {
-std::string bufferstring = std::string();
 while (!fin.eof()) {
-bufferstring = "";
-std::getline(fin, bufferstring);
-this->menu[this->menu.size()] = bufferstring;
+std::getline(fin, this->menu[this->menu.size()]);
 }
 }
 fin.close();
@@ -64,11 +61,10 @@ fin.open(pathprices);
 if (!fin.is_open()) {
 std::cout << "Ошибка открытия файла\n";
 } else {
-std::string bufferstring = std::string();
 while (!fin.eof()) {
-bufferstring = "";
-std::getline(fin, bufferstring);
-this->prices[this->prices.size()] = std::stoi(bufferstring);
+std::getline(fin, this->menu[this->menu.size()]);
+this->prices[this->prices.size()] = std::stoi(this->menu[this->menu.size()-1]);
+this->menu.erase(this->menu.size());
 }
 }
 if (this->prices.size() < this->menu.size()) {
