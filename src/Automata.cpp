@@ -3,18 +3,14 @@
 #include <iostream>
 #include <fstream>
 #include <string>
-#include "thread"
-#include "chrono"
 #include "Automata.h"
 void Automata::on() {
 if (this->state == OFF) {
 this->state = WAIT;
-std::this_thread::sleep_for(std::chrono::milliseconds(1000));
 }
 }
 void Automata::off() {
 this->state = OFF;
-std::this_thread::sleep_for(std::chrono::milliseconds(1000));
 }
 void Automata::coin() {
 if (this->state != OFF) {
@@ -31,7 +27,6 @@ this->cash += -money;
 else
 this->cash += money;
 this->state = ACCEPT;
-std::this_thread::sleep_for(std::chrono::milliseconds(1000));
 }
 }
 void Automata::etMenu(std::map<int, std::string> menu,
@@ -100,13 +95,11 @@ this->state = WAIT;
 }
 this->choice = choice;
 this->state = CHOSEN;
-std::this_thread::sleep_for(std::chrono::milliseconds(1000));
 }
 }
 void Automata::check() {
 if (this->state == CHOSEN) {
 if (this->cash < this->prices[this->choice]) {
-std::this_thread::sleep_for(std::chrono::milliseconds(2000));
 this->state = WAIT;
 } else {
 this->state = MAKING;
@@ -117,14 +110,12 @@ this->state = WAIT;
 }
 void Automata::cancel() {
 if (this->state != OFF) {
-std::this_thread::sleep_for(std::chrono::milliseconds(1000));
 this->state = WAIT;
 }
 }
 void Automata::cook() {
 if (this->state == MAKING) {
 this->cash -= this->prices[this->choice];
-std::this_thread::sleep_for(std::chrono::milliseconds(4000));
 this->state = READY;
 }
 }
