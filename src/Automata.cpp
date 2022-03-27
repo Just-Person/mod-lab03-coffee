@@ -57,7 +57,7 @@ this->prices.clear();
 if (!fin.is_open()) {
 std::cout << "Ошибка открытия файла\n";
 } else {
-std::string bufferstring = "";
+std::string bufferstring = std::string();
 while (!fin.eof()) {
 bufferstring = "";
 std::getline(fin, bufferstring);
@@ -69,7 +69,7 @@ fin.open(pathprices);
 if (!fin.is_open()) {
 std::cout << "Ошибка открытия файла\n";
 } else {
-std::string bufferstring = "";
+std::string bufferstring = std::string();
 while (!fin.eof()) {
 bufferstring = "";
 std::getline(fin, bufferstring);
