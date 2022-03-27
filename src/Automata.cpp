@@ -1,8 +1,8 @@
 // Copyright 2022 UNN-IASR
-#include <fstream>
-#include <string>
 #include <iostream>
 #include <stdio.h>
+#include <fstream>
+#include <string>
 #include <thread>
 #include <chrono>
 #include "Automata.h"
