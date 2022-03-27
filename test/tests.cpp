@@ -5,14 +5,14 @@
 TEST(TEST1, TrueOrFalse) {
     Automata automata;
     automata.on();
-    EXPECT_EQ(STATES::WAIT, automata.getState());
+    EXPECT_EQ(States::WAIT, automata.getState());
 }
 
 TEST(TEST2, TrueOrFalse) {
     Automata automata;
     automata.on();
     automata.check();
-    EXPECT_EQ(STATES::WAIT, automata.getState());
+    EXPECT_EQ(States::WAIT, automata.getState());
 }
 
 TEST(TEST3, TrueOrFalse) {
@@ -21,7 +21,7 @@ TEST(TEST3, TrueOrFalse) {
     automata.coin(10);
     automata.coin(10);
     automata.coin(10);
-    EXPECT_EQ(STATES::ACCEPT, automata.getState());
+    EXPECT_EQ(States::ACCEPT, automata.getState());
 }
 
 TEST(TEST4, TrueOrFalse) {
@@ -31,7 +31,7 @@ TEST(TEST4, TrueOrFalse) {
     automata.coin(10);
     automata.coin(10);
     automata.choiceuser(1);
-    EXPECT_EQ(STATES::CHOSEN, automata.getState());
+    EXPECT_EQ(States::CHOSEN, automata.getState());
 }
 
 
@@ -43,7 +43,7 @@ TEST(TEST5, TrueOrFalse) {
     automata.coin(10);
     automata.choiceuser(1);
     automata.check();
-    EXPECT_EQ(STATES::WAIT, automata.getState());
+    EXPECT_EQ(States::WAIT, automata.getState());
 }
 
 TEST(TEST6, TrueOrFalse) {
@@ -52,7 +52,7 @@ TEST(TEST6, TrueOrFalse) {
     automata.coin(100);
     automata.choiceuser(1);
     automata.check();
-    EXPECT_EQ(STATES::MAKING, automata.getState());
+    EXPECT_EQ(States::MAKING, automata.getState());
 }
 
 TEST(TEST7, TrueOrFalse) {
@@ -62,7 +62,7 @@ TEST(TEST7, TrueOrFalse) {
     automata.choiceuser(1);
     automata.check();
     automata.cook()
-    EXPECT_EQ(STATES::READY, automata.getState());
+    EXPECT_EQ(States::READY, automata.getState());
 }
 
 TEST(TEST8, TrueOrFalse) {
@@ -80,14 +80,14 @@ TEST(TEST9, TrueOrFalse) {
     automata.on();
     automata.coin(60);
     automata.choice(1000);
-    EXPECT_EQ(STATES::WAIT, automata.getState());
+    EXPECT_EQ(States::WAIT, automata.getState());
 }
 
 TEST(TEST10, TrueOrFalse) {
     Automata automata;
     automata.on();
     automata.cook();
-    EXPECT_EQ(STATES::WAIT, automata.getState());
+    EXPECT_EQ(States::WAIT, automata.getState());
 }
 
 TEST(TEST11, TrueOrFalse) {
@@ -99,5 +99,5 @@ TEST(TEST11, TrueOrFalse) {
     automata.cook();
     automata.finish();
     automata.off();
-    EXPECT_EQ(STATES::OFF, automata.getState());
+    EXPECT_EQ(States::OFF, automata.getState());
 }
