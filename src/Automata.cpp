@@ -23,7 +23,7 @@ void Automata::coin()
 	if (this->state != OFF)
 	{
 		int money = 0;
-		std::cout << "Ââåäèòå ñóììó: ";
+		std::cout << "Ð’Ð²ÐµÐ´Ð¸Ñ‚Ðµ ÑÑƒÐ¼Ð¼Ñƒ: ";
 		std::cin >> money;
 		this->coin(money);
 	}
@@ -31,11 +31,14 @@ void Automata::coin()
 void Automata::coin(int money)
 {
 	if (this->state != OFF)
-	if (money < 0)
-		this->cash += -money;
-	else
-		this->cash += money;
-	std::this_thread::sleep_for(std::chrono::milliseconds(1000));
+	{
+		if (money < 0)
+			this->cash += -money;
+		else
+			this->cash += money;
+		this->state = ACCEPT;
+		std::this_thread::sleep_for(std::chrono::milliseconds(1000));
+	}
 }
 void Automata::etMenu(std::map<int, std::string> menu, std::map <int, int> prices)
 {
@@ -61,7 +64,7 @@ void Automata::etMenu(std::string pathmenu, std::string pathprices)
 	this->prices.clear();
 	if (!fin.is_open())
 	{
-		std::cout << "Îøèáêà îòêðûòèÿ ôàéëà\n";
+		std::cout << "ÐžÑˆÐ¸Ð±ÐºÐ° Ð¾Ñ‚ÐºÑ€Ñ‹Ñ‚Ð¸Ñ Ñ„Ð°Ð¹Ð»Ð°\n";
 	}
 	else
 	{
@@ -80,7 +83,7 @@ void Automata::etMenu(std::string pathmenu, std::string pathprices)
 	fin.open(pathprices);
 	if (!fin.is_open())
 	{
-		std::cout << "Îøèáêà îòêðûòèÿ ôàéëà\n";
+		std::cout << "ÐžÑˆÐ¸Ð±ÐºÐ° Ð¾Ñ‚ÐºÑ€Ñ‹Ñ‚Ð¸Ñ Ñ„Ð°Ð¹Ð»Ð°\n";
 	}
 	else
 	{
@@ -117,7 +120,7 @@ void Automata::choiceuser()
 }
 void Automata::choiceuser(int choice)
 {
-	if (this->state != OFF)
+	if (this->state == ACCEPT)
 	{
 		if (choice<0 || choice>this->menu.size())
 		{
@@ -139,7 +142,6 @@ void Automata::check()
 		}
 		else
 		{
-			this->cash -= this->prices[this->choice];
 			this->state = MAKING;
 		}
 	}
@@ -160,6 +162,7 @@ void Automata::cook()
 { 
 	if (this->state == MAKING)
 	{
+		this->cash -= this->prices[this->choice];
 		std::this_thread::sleep_for(std::chrono::milliseconds(4000));
 		this->state = READY;
 	}
