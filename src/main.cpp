@@ -1,6 +1,6 @@
 // Copyright 2022 UNN-IASR
-#include <iostream>
 #include <locale.h>
+#include <iostream>
 #include "Automata.h"
 
 int main() {
