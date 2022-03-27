@@ -88,9 +88,10 @@ void Automata::choiceuser(int choice) {
 if (this->state == ACCEPT) {
 if (choice<0 || choice>this->menu.size()) {
 this->state = WAIT;
-}
+} else {
 this->choice = choice;
 this->state = CHOSEN;
+}
 }
 }
 void Automata::check() {
