@@ -34,7 +34,8 @@ this->state = ACCEPT;
 std::this_thread::sleep_for(std::chrono::milliseconds(1000));
 }
 }
-void Automata::etMenu(std::map<int, std::string> menu, std::map <int, int> prices) {
+void Automata::etMenu(std::map<int, std::string> menu,
+std::map <int, int> prices) {
 this->menu.clear();
 this->prices.clear();
 for (int i = 0; i < menu.size(); i++) {
@@ -122,7 +123,7 @@ std::this_thread::sleep_for(std::chrono::milliseconds(1000));
 this->state = WAIT;
 }
 }
-void Automata::cook() { 
+void Automata::cook() {
 if (this->state == MAKING) {
 this->cash -= this->prices[this->choice];
 std::this_thread::sleep_for(std::chrono::milliseconds(4000));
