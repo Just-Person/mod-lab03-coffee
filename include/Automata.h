@@ -17,9 +17,9 @@ public:
 		this->state = OFF;
 		this->cash = 0;
 		this->choice = -1;
-		menu[0] = "Латте";
-		menu[1] = "Капучино";
-		menu[2] = "Эспрессо";
+		menu[0] = "Р›Р°С‚С‚Рµ";
+		menu[1] = "РљР°РїСѓС‡РёРЅРѕ";
+		menu[2] = "Р­СЃРїСЂРµСЃСЃРѕ";
 		prices[0] = 50;
 		prices[1] = 60;
 		prices[2] = 70;
