@@ -1,10 +1,10 @@
 // Copyright 2022 UNN-IASR
-#include <iostream>
 #include <stdio.h>
+#include <iostream>
 #include <fstream>
 #include <string>
-#include <thread>
-#include <chrono>
+#include "thread"
+#include "chrono"
 #include "Automata.h"
 void Automata::on() {
 if (this->state == OFF) {
@@ -43,9 +43,10 @@ this->menu[i] = menu[i];
 }
 for (int i = 0; i < prices.size(); i++)
 this->prices[i] = prices[i];
-if (this->prices.size() < this->menu.size())
+if (this->prices.size() < this->menu.size()) {
 for (int i = 0; i < this->menu.size() - this->prices.size(); i++) {
 this->prices[this->prices.size()] = 50;
+}
 }
 }
 void Automata::etMenu(std::string pathmenu, std::string pathprices) {
@@ -55,8 +56,7 @@ this->menu.clear();
 this->prices.clear();
 if (!fin.is_open()) {
 std::cout << "Ошибка открытия файла\n";
-}
-else {
+} else {
 std::string bufferstring = "";
 while (!fin.eof()) {
 bufferstring = "";
@@ -68,8 +68,7 @@ fin.close();
 fin.open(pathprices);
 if (!fin.is_open()) {
 std::cout << "Ошибка открытия файла\n";
-}
-else {
+} else {
 std::string bufferstring = "";
 while (!fin.eof()) {
 bufferstring = "";
@@ -77,9 +76,10 @@ std::getline(fin, bufferstring);
 this->prices[this->prices.size()] = std::stoi(bufferstring);
 }
 }
-if (this->prices.size() < this->menu.size())
+if (this->prices.size() < this->menu.size()) {
 for (int i = 0; i < this->menu.size() - this->prices.size(); i++) {
 this->prices[this->prices.size()] = 50;
+}
 }
 }
 States Automata::getState() {
@@ -108,12 +108,10 @@ if (this->state == CHOSEN) {
 if (this->cash < this->prices[this->choice]) {
 std::this_thread::sleep_for(std::chrono::milliseconds(2000));
 this->state = WAIT;
-}
-else {
+} else {
 this->state = MAKING;
 }
-}
-else {
+} else {
 this->state = WAIT;
 }
 }
