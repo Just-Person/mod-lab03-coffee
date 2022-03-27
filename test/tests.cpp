@@ -79,7 +79,7 @@ TEST(TEST9, TrueOrFalse) {
     Automata automata;
     automata.on();
     automata.coin(60);
-    automata.choice(1000);
+    automata.choiceuser(1000);
     EXPECT_EQ(States::WAIT, automata.getState());
 }
 
@@ -94,7 +94,7 @@ TEST(TEST11, TrueOrFalse) {
     Automata automata;
     automata.on();
     automata.coin(60);
-    automata.choice(1);
+    automata.choiceuser(1);
     automata.check();
     automata.cook();
     automata.finish();
