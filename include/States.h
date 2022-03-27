@@ -1,5 +1,5 @@
 #pragma once
 enum States
 {
-	OFF, WAIT, CHOSEN, MAKING, READY
+	OFF, ACCEPT, WAIT, CHOSEN, MAKING, READY
 };
